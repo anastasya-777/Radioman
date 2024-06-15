@@ -3,7 +3,7 @@ public class Radio {
     private int currentVolume;
 
     public Radio() {
-        // начальные значения для радиостанции и громкости
+        
         this.currentStation = 0;
         this.currentVolume = 0;
     }
@@ -58,7 +58,7 @@ public class Radio {
 
     public void prevStation() {
         if (currentStation == 0) {
-            currentStation = 9; // Предполагаем, что максимальное значение станции - 9
+            currentStation = 9; 
         } else {
             currentStation--;
         }
