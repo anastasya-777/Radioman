@@ -54,7 +54,7 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
-    // Дополнительные тесты для проверки установки станции и громкости
+    
     @Test
     public void shouldSetStationWithinRange() {
         radio = new Radio();
@@ -68,7 +68,7 @@ public class RadioTest {
     public void shouldNotSetStationAboveRange() {
         radio = new Radio();
         radio.setCurrentStation(10);
-        int expected = 0; // станция не изменится, если задано значение вне диапазона
+        int expected = 0; 
         int actual = radio.getCurrentStation();
         Assertions.assertEquals(expected, actual);
     }
@@ -86,7 +86,7 @@ public class RadioTest {
     public void shouldNotSetVolumeAboveRange() {
         radio = new Radio();
         radio.setCurrentVolume(11);
-        int expected = 0; // громкость не изменится, если задано значение вне диапазона
+        int expected = 0; 
         int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
@@ -96,7 +96,7 @@ public class RadioTest {
     public void shouldNotSetStationBelowRange() {
         radio = new Radio();
         radio.setCurrentStation(-1);
-        int expected = 0; // станция не изменится, если задано значение вне диапазона
+        int expected = 0; 
         int actual = radio.getCurrentStation();
         Assertions.assertEquals(expected, actual);
     }
@@ -105,7 +105,7 @@ public class RadioTest {
     public void shouldNotSetVolumeBelowRange() {
         radio = new Radio();
         radio.setCurrentVolume(-1);
-        int expected = 0; // громкость не изменится, если задано значение вне диапазона
+        int expected = 0; 
         int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
@@ -165,7 +165,7 @@ public class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentStation(0);
         radio.prevStation();
-        int expected = 9; // Предполагаем, что максимальное значение станции - 9
+        int expected = 9; 
         int actual = radio.getCurrentStation();
         Assertions.assertEquals(expected, actual);
     }
