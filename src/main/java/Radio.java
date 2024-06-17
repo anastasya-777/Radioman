@@ -90,10 +90,5 @@ public class Radio {
         setCurrentStation(randomStation);
     }
 
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> dd79afb5ac2eff4e022ddf17f8923f72f6a21e2a
 }
