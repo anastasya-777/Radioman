@@ -130,5 +130,34 @@ public class RadioTest {
     }
 
 
+    @Test
+    public void shouldNotChangeStationWhenSetToExactMaxLimit() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(9);
+        int expected = 9;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotChangeVolumeWhenSetToExactMaxLimit() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(10);
+        int expected = 10;
+        int actual = radio.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void gettersShouldReturnCorrectValues() {
+        Radio radio = new Radio();
+        Assertions.assertEquals(10, radio.getAmountStation());
+        Assertions.assertEquals(0, radio.getMinStation());
+        Assertions.assertEquals(9, radio.getMaxStation());
+        Assertions.assertEquals(0, radio.getMinVolume());
+        Assertions.assertEquals(10, radio.getMaxVolume());
+    }
+
+
 }
 
