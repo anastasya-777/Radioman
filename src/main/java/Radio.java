@@ -1,20 +1,29 @@
 public class Radio {
-    private int amountStation = 10;
+    private int amountStation;
     private int minStation = 0;
-    private int maxStation = 9;
+    private int maxStation;
     private int minVolume = 0;
-    private int maxVolume = 10;
-
+    private int maxVolume = 100;
 
     private int currentStation;
-    private  int currentVolume;
+    private int currentVolume;
 
+    // Конструктор по умолчанию
+    public Radio() {
+        this(10); // По умолчанию 10 станций
+    }
 
-    public int getCurrentStation (){
+    // Конструктор с параметром для задания количества станций
+    public Radio(int amountStation) {
+        this.amountStation = amountStation;
+        this.maxStation = amountStation - 1;
+    }
+
+    public int getCurrentStation() {
         return currentStation;
     }
 
-    public int getCurrentVolume(){
+    public int getCurrentVolume() {
         return currentVolume;
     }
 
@@ -39,49 +48,46 @@ public class Radio {
     }
 
     public void setCurrentStation(int station) {
-        if (station < 0) {
+        if (station < minStation) {
             return;
         }
-        if (station > 9) {
+        if (station > maxStation) {
             return;
         }
         currentStation = station;
     }
 
     public void setCurrentVolume(int volume) {
-        if (volume < 0) {
+        if (volume < minVolume) {
             return;
         }
-        if (volume > 10) {
+        if (volume > maxVolume) {
             return;
         }
         currentVolume = volume;
     }
 
     public void increaseVolume() {
-        if (currentVolume < 10) {
+        if (currentVolume < maxVolume) {
             currentVolume++;
         }
     }
 
     public void decreaseVolume() {
-        if (currentVolume > 0) {
+        if (currentVolume > minVolume) {
             currentVolume--;
         }
     }
 
-    public void nextStation(){
-        currentStation++;
-        if (currentStation > maxStation){
-            currentStation = minStation;
-        }
+    public void nextStation() {
+        currentStation = (currentStation + 1) % amountStation;
     }
 
-    public void prevStation(){
-        if (currentStation == minStation){
-            currentStation = maxStation; // Переключение на последнюю станцию
+    public void prevStation() {
+        if (currentStation == minStation) {
+            currentStation = maxStation;
         } else {
-            currentStation--; // Переключение на предыдущую станцию
+            currentStation--;
         }
     }
 
@@ -89,5 +95,4 @@ public class Radio {
         int randomStation = (int) (Math.random() * amountStation);
         setCurrentStation(randomStation);
     }
-
 }
