@@ -158,6 +158,15 @@ public class RadioTest {
         Assertions.assertEquals(10, radio.getMaxVolume());
     }
 
+    @Test
+    public void shouldDecreaseStationWhenNotAtMin() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(5);
+        radio.prevStation();
+        int expected = 4;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
 
 }
 
