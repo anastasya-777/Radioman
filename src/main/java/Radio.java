@@ -1,35 +1,61 @@
 public class Radio {
+    private int amountStation = 10;
+    private int minStation = 0;
+    private int maxStation = 9;
+    private int minVolume = 0;
+    private int maxVolume = 10;
+
+
     private int currentStation;
-    private int currentVolume;
+    private  int currentVolume;
 
-    public Radio() {
-        // начальные значения для радиостанции и громкости
-        this.currentStation = 0;
-        this.currentVolume = 0;
-    }
 
-    public int getCurrentStation() {
+    public int getCurrentStation (){
         return currentStation;
     }
 
-    public void setCurrentStation(int station) {
-        if (station >= 0) {
-            if (station <= 9) {
-                this.currentStation = station;
-            }
-        }
-    }
-
-    public int getCurrentVolume() {
+    public int getCurrentVolume(){
         return currentVolume;
     }
 
-    public void setCurrentVolume(int volume) {
-        if (volume >= 0) {
-            if (volume <= 10) {
-                this.currentVolume = volume;
-            }
+    public int getAmountStation() {
+        return amountStation;
+    }
+
+    public int getMinStation() {
+        return minStation;
+    }
+
+    public int getMaxStation() {
+        return maxStation;
+    }
+
+    public int getMinVolume() {
+        return minVolume;
+    }
+
+    public int getMaxVolume() {
+        return maxVolume;
+    }
+
+    public void setCurrentStation(int station) {
+        if (station < 0) {
+            return;
         }
+        if (station > 9) {
+            return;
+        }
+        currentStation = station;
+    }
+
+    public void setCurrentVolume(int volume) {
+        if (volume < 0) {
+            return;
+        }
+        if (volume > 10) {
+            return;
+        }
+        currentVolume = volume;
     }
 
     public void increaseVolume() {
@@ -44,24 +70,27 @@ public class Radio {
         }
     }
 
-    public void nextStation() {
-        currentStation = (currentStation + 1) % 10;
-    }
-
-    public void previousStation() {
-        if (currentStation > 0) {
-            currentStation--;
-        } else {
-            currentStation = 9;
+    public void nextStation(){
+        currentStation++;
+        if (currentStation > maxStation){
+            currentStation = minStation;
         }
     }
 
-    public void prevStation() {
-        if (currentStation == 0) {
-            currentStation = 9; // Предполагаем, что максимальное значение станции - 9
+    public void prevStation(){
+        if (currentStation == minStation){
+            currentStation = maxStation; // Переключение на последнюю станцию
         } else {
-            currentStation--;
+            currentStation--; // Переключение на предыдущую станцию
         }
     }
+
+    public void setRandomStation() {
+        int randomStation = (int) (Math.random() * amountStation);
+        setCurrentStation(randomStation);
+    }
+
+
+
 
 }
