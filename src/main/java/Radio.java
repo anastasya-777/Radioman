@@ -2,11 +2,6 @@ import java.util.Random;
 
 public class Radio {
 
-    public Radio() {
-        // Конструктор класса Radio
-    }
-
-
     private int currentStation;
     private  int currentVolume;
 
@@ -52,25 +47,28 @@ public class Radio {
         }
     }
 
-    public void nextStation() {
-        if (currentStation < 9) {
-            currentStation++;
+     public void nextStation() {
+        int target = currentStation +1;
+        if (target > 9) {
+            currentStation =0;
         } else {
-            currentStation = 0;
+            currentStation = target;
         }
     }
 
     public void prevStation() {
-        if (currentStation > 0) {
-            currentStation--;
+        int target = currentStation -1;
+        if (target < 0) {
+            currentStation =9;
         } else {
-            currentStation = 9;
+            currentStation = target;
         }
     }
 
-    public void setRandomStation() {
-        Random random = new Random(); // Создаем экземпляр генератора случайных чисел
-        currentStation = random.nextInt(10); // Генерируем случайное число от 0 до 9 и устанавливаем как текущую станцию
+    public void setRandomStation(int newCurrentStation) {
+        int target = newCurrentStation;
+        setCurrentStation(target);
+
     }
 
 }
