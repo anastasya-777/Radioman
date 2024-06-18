@@ -140,7 +140,7 @@ public class RadioTest {
     @Test
     public void shouldSetRandomStationWithinRange() {
         Radio radio = new Radio();
-        radio.setRandomStation();
+        radio.setRandomStation(10);
         int actual = radio.getCurrentStation();
         Assertions.assertTrue(actual >= 0);
         Assertions.assertTrue(actual <= 9);
