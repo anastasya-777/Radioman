@@ -145,13 +145,14 @@ public void setStationToNine() {
     int actual = radio.getCurrentStation();
     Assertions.assertEquals(expected, actual);
 }
+    
+ @Test
+ public void shouldSetToOverLimitStation(){
+        Radio radio = new Radio();
+        radio.setCurrentStation(10);
 
-@Test
-public void stayWithinRange() {
-    Radio radio = new Radio();
-    radio.setRandomStation(9); // Предполагая, что максимум - 9
-    int expected = 9; // или другое значение, если станция не изменяется
-    int actual = radio.getCurrentStation();
-    Assertions.assertEquals(expected, actual);
-}
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected,actual);
+    }
 }
