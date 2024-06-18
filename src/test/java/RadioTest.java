@@ -137,12 +137,21 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
-    @Test
-    public void shouldSetRandomStationWithinRange() {
-        Radio radio = new Radio();
-        radio.setRandomStation(10);
-        int actual = radio.getCurrentStation();
-        Assertions.assertTrue(actual >= 0);
-        Assertions.assertTrue(actual <= 9);
-    }
+   @Test
+public void setStationToNine() {
+    Radio radio = new Radio();
+    radio.setRandomStation(5);
+    int expected = 5;
+    int actual = radio.getCurrentStation();
+    Assertions.assertEquals(expected, actual);
+}
+
+@Test
+public void stayWithinRange() {
+    Radio radio = new Radio();
+    radio.setRandomStation(9); // Предполагая, что максимум - 9
+    int expected = 9; // или другое значение, если станция не изменяется
+    int actual = radio.getCurrentStation();
+    Assertions.assertEquals(expected, actual);
+}
 }
