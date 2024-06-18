@@ -1,9 +1,10 @@
+import java.util.Random;
+
 public class Radio {
-    private int amountStation = 10;
-    private int minStation = 0;
-    private int maxStation = 9;
-    private int minVolume = 0;
-    private int maxVolume = 10;
+
+    public Radio() {
+        // Конструктор класса Radio
+    }
 
 
     private int currentStation;
@@ -18,25 +19,6 @@ public class Radio {
         return currentVolume;
     }
 
-    public int getAmountStation() {
-        return amountStation;
-    }
-
-    public int getMinStation() {
-        return minStation;
-    }
-
-    public int getMaxStation() {
-        return maxStation;
-    }
-
-    public int getMinVolume() {
-        return minVolume;
-    }
-
-    public int getMaxVolume() {
-        return maxVolume;
-    }
 
     public void setCurrentStation(int station) {
         if (station < 0) {
@@ -70,24 +52,25 @@ public class Radio {
         }
     }
 
-    public void nextStation(){
-        currentStation++;
-        if (currentStation > maxStation){
-            currentStation = minStation;
+    public void nextStation() {
+        if (currentStation < 9) {
+            currentStation++;
+        } else {
+            currentStation = 0;
         }
     }
 
-    public void prevStation(){
-        if (currentStation == minStation){
-            currentStation = maxStation; // Переключение на последнюю станцию
+    public void prevStation() {
+        if (currentStation > 0) {
+            currentStation--;
         } else {
-            currentStation--; // Переключение на предыдущую станцию
+            currentStation = 9;
         }
     }
 
     public void setRandomStation() {
-        int randomStation = (int) (Math.random() * amountStation);
-        setCurrentStation(randomStation);
+        Random random = new Random(); // Создаем экземпляр генератора случайных чисел
+        currentStation = random.nextInt(10); // Генерируем случайное число от 0 до 9 и устанавливаем как текущую станцию
     }
 
 }
