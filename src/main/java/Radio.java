@@ -5,12 +5,12 @@ public class Radio {
     private int minVolume = 0;
     private int maxVolume = 100;
 
-    private int currentStation;
-    private int currentVolume;
+    private int currentStation = minStation;
+    private int currentVolume = minVolume;
 
     // Конструктор по умолчанию
     public Radio() {
-        this(10); // По умолчанию 10 станций
+        this(10);// По умолчанию 10 станций
     }
 
     // Конструктор с параметром для задания количества станций
